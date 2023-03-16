@@ -1,5 +1,4 @@
-const { trusted } = require("mongoose");
-const Tweet=require("../models/tweet");
+import Tweet from "../models/tweet.js";
 class TweetRepository{
     async createTweet(data){
         try {
@@ -12,14 +11,6 @@ class TweetRepository{
     async getTweet(tweetId){
         try {
             const tweet=await Tweet.findById(tweetId)
-            return tweet;
-        } catch (error) {
-            console.log(error,"inside repo")
-        }
-    }
-    async updateTweet(tweetId,data){
-        try {
-            const tweet=await Tweet.findByIdAndUpdate(tweetId,data,{new:true})
             return tweet;
         } catch (error) {
             console.log(error,"inside repo")
@@ -50,4 +41,4 @@ class TweetRepository{
         }
     }
 }
-module.exports=TweetRepository;
+export default TweetRepository;

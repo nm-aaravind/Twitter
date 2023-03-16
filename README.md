@@ -12,4 +12,4 @@
     -Follower Count
     -Bio
     -Last 10 tweets from the user
-    -User auth
+-User auth  
