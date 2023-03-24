@@ -7,7 +7,7 @@ class TweetService{
     }
     async create(data){
         let tags=data.content.match(/#[a-z0-9_A-Z]+/g);
-        tags=tags.map((tag)=>tag.substring(1));
+        tags=tags.map((tag)=>tag.substring(1).toLowerCase());
         const tweet=await this.tweetRepository.createTweet(data);
         const presentTags=await this.hashtagRepository.findByName(tags);
         let titleofpresentTags=presentTags.map(tags=>tags.title);
@@ -20,7 +20,7 @@ class TweetService{
             tag.save();
         })
         const createTags=await this.hashtagRepository.bulkCreate(newTags);
-        return createTags;
+        return tweet
     }  
 }
 export default TweetService;
