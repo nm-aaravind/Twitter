@@ -6,6 +6,8 @@ class TweetService{
         this.hashtagRepository=new HashtagRepository();
     }
     async create(data){
+
+        // Here if same hashtag is used more than once in same tweet, then the same hashtag will be inserted twice which is wrong. 
         let tags=data.content.match(/#[a-z0-9_A-Z]+/g);
         tags=tags.map((tag)=>tag.substring(1).toLowerCase());
         const tweet=await this.tweetRepository.createTweet(data);
