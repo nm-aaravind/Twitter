@@ -1,5 +1,9 @@
 import Tweet from "../models/tweet.js";
-class TweetRepository{
+import crudRepository from "./crudRepository.js";
+class TweetRepository extends crudRepository{
+    constructor(){
+        super(Tweet);
+    }
     async createTweet(data){
         try {
             const tweet=await Tweet.create(data);
@@ -38,6 +42,14 @@ class TweetRepository{
             return tweet
         } catch (error) {
             console.log(error,"in repo of tweet")
+        }
+    }
+    async find(id){
+        try {
+            const response=await Tweet.findById(id).populate({path:'likes'})
+            return response;
+        } catch (error) {
+            consoe=le.log(error)
         }
     }
 }

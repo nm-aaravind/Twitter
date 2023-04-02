@@ -7,7 +7,8 @@ class LikeService{
     async toggleLike(modelId,modelType,userId){
         try {
             if(modelType=="Tweet"){
-                const likeable=await this.tweetRepository.get(modelId).populate('Like')
+                var likeable=await this.tweetRepository.find(modelId)
+                console.log(likeable)
             }
             else if(modelType=='Comment'){
                 //TODO

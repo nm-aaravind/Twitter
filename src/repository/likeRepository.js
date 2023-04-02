@@ -1,7 +1,7 @@
 import Like from "../models/like.js";
 import crudRepository from "./crudRepository.js";
 class LikeRepository extends crudRepository{
-    consturctor(){
+    constructor(){
         super(Like)
     }
     async findByUserAndLikeable(data){

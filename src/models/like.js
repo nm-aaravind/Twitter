@@ -16,5 +16,5 @@ const likeSchema=mongoose.Schema({
         ref:'User'
     }
 })
-const Like=mongoose.model(likeSchema)
+const Like=mongoose.model('Like',likeSchema)
 export default Like

@@ -5,10 +5,10 @@ const tweetSchema=new mongoose.Schema({
         required:true,
         max:[250,'Character limit exceeded']
     },
-    likes:{
+    likes:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Like"
-    }
+    }]
 },{timestamps:true});
 const Tweet=mongoose.model('Tweet',tweetSchema);
 export default Tweet;
