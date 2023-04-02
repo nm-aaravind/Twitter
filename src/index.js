@@ -15,11 +15,5 @@ app.listen(3000, async () => {
     console.log("Mongo db connected");
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({extended:true}))
-    app.use('/api', router)
-    let userRepo=new UserRepository()
-    let tweete=new TweetRepository()
-    const t=await tweete.getAll()
-    let likeSer=new LikeService()
-    likeSer.toggleLike(t[0].id,'Tweet',"642959f5c6cae65ea50f06be")
-    
+    app.use('/api', router)  
 })
