@@ -5,7 +5,6 @@ class TweetService{
         this.hashtagRepository=new HashtagRepository();
     }
     async create(data){
-
         // Here if same hashtag is used more than once in same tweet, then the same hashtag will be inserted twice which is wrong. 
         try {
             const tweet=await this.tweetRepository.createTweet(data);
@@ -29,5 +28,13 @@ class TweetService{
             console.log(error)
         }
     }  
+    async get(tweetId){
+        try {
+            const response=await this.tweetRepository.getWithComments(tweetId)
+            return response;
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
 export default TweetService;
